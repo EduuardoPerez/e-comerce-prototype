@@ -25,6 +25,32 @@ class Productos extends Component {
 			.then(respueta => this.setState({productos: respueta.data}));
 	}
 
+	busquedaProducto = (busqueda) => {
+		if (busqueda.length > 3) {
+
+			// Obtener copia del state
+			let productos = [...this.state.productos];
+			
+			// Filtrar
+			let resultado;
+			resultado = productos.filter(producto => (
+				producto.nombre.toLowerCase().indexOf(busqueda.toLowerCase()) !== -1
+			))
+			
+			// Enviar al state los productos filtrados y la busqueda
+			this.setState({
+				terminoBusqueda: busqueda,
+				productos: resultado
+			})
+		} else {
+			this.setState({
+				terminoBusqueda: ''
+			}, () => {
+				this.queryAPI();
+			})
+		}
+	}
+
 	login = () => {
 		this.props.auth.login();
 	}
@@ -40,7 +66,7 @@ class Productos extends Component {
 						<React.Fragment>
 							<h2>Nuestros Productos</h2>
 							<Buscador
-								busqueda={this.props.busquedaProducto} 
+								busqueda={this.busquedaProducto} 
 							/>
 							<ul className="lista-productos">
 								{Object.keys(this.state.productos).map(producto => (
