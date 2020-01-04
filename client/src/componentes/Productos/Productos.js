@@ -84,7 +84,7 @@ class Productos extends Component {
 					!isAuthenticated() &&  (
 						<div className="contenedor-boton">
 							<p>Para ver el contenido debes estar logueado:</p>
-							<a className="boton" onClick={ this.login }>Iniciar sesión</a>
+							<a href="!#" className="boton" onClick={ this.login }>Iniciar sesión</a>
 						</div>
 					)
 				}

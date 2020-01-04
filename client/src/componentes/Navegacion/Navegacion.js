@@ -18,9 +18,9 @@ class Navegacion extends Component {
 		let resultado;
 
 		if( isAuthenticated() ) {
-			resultado = <a onClick={this.cerrarSesion}>Cerrar sesión</a>
+			resultado = <a href="!#" onClick={this.cerrarSesion}>Cerrar sesión</a>
 		} else {
-			resultado = <a onClick={this.inciarSesion}>Inciar sesión</a>
+			resultado = <a href="!#" onClick={this.inciarSesion}>Inciar sesión</a>
 		}
 
 		return ( 
